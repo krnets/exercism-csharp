@@ -1,0 +1,27 @@
+using System.Text;
+
+public static class RotationalCipher
+{
+    public static string Rotate(string text, int shiftKey)
+    {
+        var sb = new StringBuilder();
+
+        foreach (char c in text)
+        {
+            if (char.IsUpper(c))
+            {
+                char shifted = (char)((c + shiftKey - 'A') % 26 + 'A');
+                sb.Append(shifted);
+            }
+            else if (char.IsLower(c))
+            {
+                char shifted = (char)((c + shiftKey - 'a') % 26 + 'a');
+                sb.Append(shifted);
+            }
+            else
+                sb.Append(c);
+        }
+
+        return sb.ToString();
+    }
+}

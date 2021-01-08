@@ -1,0 +1,25 @@
+using System.Linq;
+
+public static class Bob
+{
+    public static string Response(string statement)
+    {
+        string response = "Whatever.";
+
+        statement = statement.Trim();
+
+        if (statement.Any(char.IsLetter) && statement.ToUpper() == statement)
+        {
+            response = "Whoa, chill out!";
+
+            if (statement.EndsWith('?'))
+                response = "Calm down, I know what I'm doing!";
+        }
+        else if (statement.EndsWith('?'))
+            response = "Sure.";
+        else if (statement.Length == 0)
+            response = "Fine. Be that way!";
+
+        return response;
+    }
+}

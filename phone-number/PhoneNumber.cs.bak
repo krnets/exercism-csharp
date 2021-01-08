@@ -1,0 +1,34 @@
+using System;
+using System.Text.RegularExpressions;
+
+public class PhoneNumber
+{
+    public static string Clean(string phoneNumber)
+    {
+        phoneNumber = Regex.Replace(phoneNumber, @"\D", "");
+
+        if (phoneNumber.Length < 10 || phoneNumber.Length > 11)
+            throw new ArgumentException();
+
+        if (phoneNumber.Length == 10 && (
+            phoneNumber[0] == '0' ||
+            phoneNumber[0] == '1' ||
+            phoneNumber[3] == '0' ||
+            phoneNumber[3] == '1'))
+            throw new ArgumentException();
+
+
+        if (phoneNumber.Length == 11 && (
+            phoneNumber[0] != '1' ||
+            phoneNumber[1] == '0' ||
+            phoneNumber[1] == '1' ||
+            phoneNumber[4] == '0' ||
+            phoneNumber[4] == '1'))
+            throw new ArgumentException();
+
+        if (phoneNumber.Length == 11 && phoneNumber[0] == '1')
+            return phoneNumber[1..];
+
+        return phoneNumber;
+    }
+}

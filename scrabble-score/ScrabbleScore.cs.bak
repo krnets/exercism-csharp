@@ -1,0 +1,30 @@
+using System.Collections.Generic;
+
+public static class ScrabbleScore
+{
+    public static int Score(string input)
+    {
+        Dictionary<int, int> scrablle = new Dictionary<int, int>();
+
+        void fillPointsMap(string letters, int score)
+        {
+            foreach (char c in letters)
+                scrablle.Add(c, score);
+        }
+
+        fillPointsMap("aeioulnrst", 1);
+        fillPointsMap("dg", 2);
+        fillPointsMap("bcmp", 3);
+        fillPointsMap("fhvwy", 4);
+        fillPointsMap("k", 5);
+        fillPointsMap("jx", 8);
+        fillPointsMap("qz", 10);
+
+        int score = 0;
+
+        foreach (char c in input.ToLower())
+            score += scrablle[c];
+
+        return score;
+    }
+}

@@ -1,0 +1,25 @@
+﻿using System.Collections.Generic;
+
+public static class Proverb
+{
+    public static string[] Recite(string[] subjects)
+    {
+        if (subjects.Length == 0)
+            return subjects;
+
+        var list = new List<string>();
+
+        for (var i = 0; i < subjects.Length - 1; i++)
+        {
+            var current = subjects[i];
+            var next = subjects[i + 1];
+            var line = $"For want of a {current} the {next} was lost.";
+            list.Add(line);
+        }
+
+        var lastLine = $"And all for the want of a {subjects[0]}.";
+        list.Add(lastLine);
+
+        return list.ToArray();
+    }
+}

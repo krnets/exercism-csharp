@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Clock.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../:\Users\ck\repos\exercism\csharp\clock\.idea\.idea.Clock.dir\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

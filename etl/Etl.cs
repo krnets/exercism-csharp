@@ -1,0 +1,15 @@
+using System.Collections.Generic;
+
+public static class Etl
+{
+    public static Dictionary<string, int> Transform(Dictionary<int, string[]> old)
+    {
+        var map = new Dictionary<string, int>();
+
+        foreach (KeyValuePair<int, string[]> item in old)
+            foreach (string s in item.Value)
+                map[s.ToLower()] = item.Key;
+
+        return map;
+    }
+}

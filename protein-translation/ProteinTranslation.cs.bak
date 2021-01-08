@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public static class ProteinTranslation
+{
+    public static string[] Proteins(string strand)
+    {
+        var AminoAcids = new Dictionary<string[], string>
+        {
+            {new []{"UUU", "UUC"}, "Phenylalanine"},
+            {new []{"AUG"}, "Methionine"},
+            {new []{"UUU", "UUC"}, "Phenylalanine"},
+            {new []{"UUA", "UUG"}, "Leucine"},
+            {new []{"UCU", "UCC", "UCA", "UCG"}, "Serine"},
+            {new []{"UAU", "UAC"}, "Tyrosine"},
+            {new []{"UGU", "UGC"}, "Cysteine"},
+            {new []{"UGG"}, "Tryptophan"},
+            {new []{"UAA", "UAG", "UGA"}, "STOP"}
+        };
+
+        var list = new List<string>();
+
+        for (int i = 0; i < strand.Length; i += 3)
+        {
+            var decoded = AminoAcids
+                .First(kvp => kvp.Key.Contains(strand.Substring(i, 3)))
+                .Value;
+
+            if (decoded == "STOP") break;
+            else list.Add(decoded);
+        }
+
+        return list.ToArray();
+    }
+}

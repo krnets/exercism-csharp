@@ -1,0 +1,22 @@
+using System.Collections.Generic;
+
+public static class RnaTranscription
+{
+    public static string ToRna(string nucleotide)
+    {
+        var list = new List<char>();
+
+        foreach (var item in nucleotide)
+        {
+            switch (item)
+            {
+                case 'C': list.Add('G'); break;
+                case 'G': list.Add('C'); break;
+                case 'T': list.Add('A'); break;
+                case 'A': list.Add('U'); break;
+                default: break;
+            }
+        }
+        return string.Concat(list);
+    }
+}

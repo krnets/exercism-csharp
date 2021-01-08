@@ -1,0 +1,14 @@
+﻿using System;
+using System.Linq;
+
+public static class ArmstrongNumbers
+{
+    public static bool IsArmstrongNumber(int number)
+    {
+        var strNumber = number.ToString();
+
+        return strNumber.Select(char.GetNumericValue)
+            .Select(x => (int)Math.Pow(x, strNumber.Length))
+            .Sum() == number;
+    }
+}
