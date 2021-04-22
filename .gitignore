@@ -1,5 +1,9 @@
 .exercism/
 .vs/
+.idea/
 bin/
 obj/
+*.sln
+*.DotSettings.user
+
 
