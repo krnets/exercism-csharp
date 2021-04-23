@@ -5,5 +5,5 @@ bin/
 obj/
 *.sln
 *.DotSettings.user
-
+.editorconfig
 
