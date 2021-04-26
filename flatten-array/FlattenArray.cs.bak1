@@ -1,0 +1,17 @@
+﻿using System.Collections;
+
+public static class FlattenArray
+{
+    public static IEnumerable Flatten(IEnumerable input)
+    {
+        foreach (var item in input)
+        {
+            if (item is IEnumerable enumerable)
+                foreach (var flattened in Flatten(enumerable))
+                    yield return flattened;
+
+            else if (item != null)
+                yield return item;
+        }
+    }
+}
