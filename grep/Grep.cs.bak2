@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -11,20 +11,12 @@ public static class Grep
     {
         var list = new List<string>();
 
-        bool caseInsensitive = false, printFileNamesOnly = false, printLineNumbers = false, invertMatch = false, matchEntireLine = false;
+        bool caseInsensitive = flags.Contains("-i");
+        bool printFileNamesOnly = flags.Contains("-l");
+        bool printLineNumbers = flags.Contains("-n");
+        bool invertMatch = flags.Contains("-v");
+        bool matchEntireLine = flags.Contains("-x");
         bool multipleFiles = files.Length > 1;
-
-        foreach (var flag in flags.Split())
-        {
-            switch (flag)
-            {
-                case "-i": caseInsensitive = true; break;
-                case "-n": printLineNumbers = true; break;
-                case "-l": printFileNamesOnly = true; break;
-                case "-v": invertMatch = true; break;
-                case "-x": matchEntireLine = true; break;
-            }
-        }
 
         var regex = new Regex(matchEntireLine ? $"^{pattern}$" : pattern,
             caseInsensitive ? RegexOptions.IgnoreCase : 0);
@@ -55,4 +47,4 @@ public static class Grep
 
         return string.Join("\n", list);
     }
-}
+}*/
