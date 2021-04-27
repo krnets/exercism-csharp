@@ -1,0 +1,53 @@
+﻿/*using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public static class AllYourBase
+{
+    private static long numberInBase10;
+
+    public static int[] Rebase(int inputBase, int[] inputDigits, int outputBase)
+    {
+        if (inputBase < 2 || outputBase < 2)
+            throw new ArgumentException("base must be at least 2");
+
+        if (inputDigits.Any(x => x < 0))
+            throw new ArgumentException("digits cannot be negative");
+
+        if (inputDigits.Any(x => x == inputBase))
+            throw new ArgumentException($"invalid positive digit with base {inputBase}");
+
+        if (inputDigits.Length == 0 || inputDigits.All(x => x == 0))
+            return new[] {0};
+
+        numberInBase10 = ToBase10(inputDigits.ToArray(), inputBase);
+
+        return ToAnyBase(numberInBase10.ToString().Select(c => (int)char.GetNumericValue(c)).ToArray(), outputBase);
+    }
+
+    private static int[] ToAnyBase(int[] digits, int outputBase)
+    {
+        if (outputBase == 10)
+            return digits;
+
+        var list = new List<int>();
+
+        while (numberInBase10 > 0)
+        {
+            list.Insert(0, (int)(numberInBase10 % outputBase));
+            numberInBase10 /= outputBase;
+        }
+
+        return list.ToArray();
+    }
+
+    private static long ToBase10(int[] digits, int inputBase)
+    {
+        long sum = 0;
+
+        for (int i = 0; i < digits.Length; i++)
+            sum += (long)(digits[i] * Math.Pow(inputBase, digits.Length - i - 1));
+
+        return sum;
+    }
+}*/

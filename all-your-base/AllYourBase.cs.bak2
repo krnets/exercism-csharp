@@ -1,0 +1,30 @@
+﻿/*using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public static class AllYourBase
+{
+    public static int[] Rebase(int inputBase, int[] inputDigits, int outputBase)
+    {
+        if (inputBase < 2 || outputBase < 2)
+            throw new ArgumentException("base must be at least 2");
+
+        if (inputDigits.Any(x => x < 0))
+            throw new ArgumentException("digits cannot be negative");
+
+        if (inputDigits.Any(x => x == inputBase))
+            throw new ArgumentException($"invalid positive digit with base {inputBase}");
+
+        var n = (long)inputDigits.Select((x, i) => x * Math.Pow(inputBase, inputDigits.Length - i - 1)).Sum();
+
+        var list = new List<int>();
+
+        while (n > 0)
+        {
+            list.Insert(0, (int)(n % outputBase));
+            n /= outputBase;
+        }
+
+        return list.DefaultIfEmpty(0).ToArray();
+    }
+}*/

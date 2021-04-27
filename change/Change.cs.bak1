@@ -1,0 +1,35 @@
+﻿/*using System;
+using System.Linq;
+
+public static class Change
+{
+    public static int[] FindFewestCoins(int[] coins, int target)
+    {
+        if (target == 0) return new int[0];
+        if (target < coins.Min())
+            throw new ArgumentException();
+
+        int[][] fewestCoins = new int[target + 1][];
+
+        //zero amount is not possible, set to empty array
+        fewestCoins[0] = new int[0];
+
+        //get coin combination for each possible amount from 1 to target, if possible
+        for (int amount = 1; amount <= target; amount++)
+        {
+            var change = coins.Where(coin => coin <= amount)
+                .Select(coin => fewestCoins[amount - coin].Append(coin))
+                .OrderBy(x => x.Count())
+                .FirstOrDefault(x => x.Sum() == amount);
+
+            if (change == null)
+                //coin combination not possible for amount, set to empty array
+                fewestCoins[amount] = new int[0];
+            else
+                //set coin combination for amount, smallest to largest coin
+                fewestCoins[amount] = change.OrderBy(c => c).ToArray();
+        }
+
+        return fewestCoins[target].Any() ? fewestCoins[target] : throw new ArgumentException();
+    }
+}*/

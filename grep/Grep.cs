@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
+
+using Exception = System.Exception;
+
+public static class Grep
+{
+    public static string Match(string pattern, string flags, string[] files)
+    {
+        var list = new List<string>();
+
+        bool caseInsensitive = flags.Contains("-i");
+        bool printFileNamesOnly = flags.Contains("-l");
+        bool printLineNumbers = flags.Contains("-n");
+        bool invertMatch = flags.Contains("-v");
+        bool matchEntireLine = flags.Contains("-x");
+        bool multipleFiles = files.Length > 1;
+
+        var regex = new Regex(matchEntireLine ? $"^{pattern}$" : pattern,
+            caseInsensitive ? RegexOptions.IgnoreCase : 0);
+
+        foreach (var fileName in files)
+        {
+            try
+            {
+                var lines = File.ReadAllLines(fileName);
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (regex.IsMatch(lines[i]) ^ invertMatch)
+                    {
+                        if (printFileNamesOnly)
+                        {
+                            list.Add(fileName);
+                            break;
+                        }
+
+                        list.Add(
+                            $"{(multipleFiles ? $"{fileName}:" : "")}{(printLineNumbers ? $"{i + 1}:" : "")}{lines[i]}");
+                    }
+                }
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
+
+        return string.Join("\n", list);
+    }
+}
