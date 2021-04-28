@@ -1,0 +1,28 @@
+/*using System.Collections.Generic;
+using System.Linq;
+
+public static class AtbashCipher
+{
+    private static char Transpose(char c) => (char)(26 - (c - 'a' + 1) + 'a');
+
+    public static string Encode(string plainValue)
+    {
+        var array = plainValue.ToLower()
+            .Where(char.IsLetterOrDigit)
+            .Select(c => char.IsLetter(c) ? Transpose(c) : c)
+            .ToArray();
+
+        var list = new List<string>();
+
+        for (int i = 0; i < array.Length; i += 5)
+            list.Add(string.Concat(array.Skip(i).Take(5)));
+
+        return string.Join(" ", list);
+    }
+
+    public static string Decode(string encodedValue)
+    {
+        return string.Concat(encodedValue.Replace(" ", "")
+            .Select(c => char.IsLetter(c) ? Transpose(c) : c));
+    }
+}*/
