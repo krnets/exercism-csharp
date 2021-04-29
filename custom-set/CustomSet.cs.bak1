@@ -1,0 +1,27 @@
+﻿/*using System.Collections.Generic;
+using System.Linq;
+
+public class CustomSet
+{
+    private readonly IEnumerable<int> _set;
+    public CustomSet(params int[] values) => _set = values;
+    public bool Empty() => !_set.Any();
+    public bool Contains(int value) => _set.Contains(value);
+    public bool Subset(CustomSet right) => _set.All(right.Contains);
+    public bool Disjoint(CustomSet right) => _set.All(x => !right.Contains(x));
+
+    public CustomSet Add(int value) =>
+        new CustomSet(_set.Where(x => x != value).Append(value).ToArray());
+
+    public CustomSet Intersection(CustomSet right) =>
+        new CustomSet(_set.Where(right.Contains).ToArray());
+
+    public CustomSet Difference(CustomSet right) =>
+        new CustomSet(_set.Except(_set.Where(right.Contains)).ToArray());
+
+    public CustomSet Union(CustomSet right) =>
+        _set.Aggregate(right, (curr, value) => curr.Add(value));
+
+    public override bool Equals(object obj) =>
+        obj is CustomSet right && (Subset(right) && right.Subset(this));
+}*/

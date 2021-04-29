@@ -1,0 +1,19 @@
+﻿/*using System;
+
+public class BankAccount
+{
+    private decimal _balance = 0;
+    private bool AccountIsActive { get; set; }
+    public decimal Balance => AccountIsActive ? _balance : throw new InvalidOperationException();
+    private readonly object _lock = new object();
+
+    public void Open() => AccountIsActive = true;
+    public void Close() => AccountIsActive = false;
+
+    public void UpdateBalance(decimal change)
+    {
+        if (!AccountIsActive) { throw new InvalidOperationException(); }
+
+        lock (_lock) { _balance += change; }
+    }
+}*/

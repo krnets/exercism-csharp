@@ -1,0 +1,36 @@
+﻿/*using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+public static class RunLengthEncoding
+{
+    public static string Encode(string input)
+    {
+        var slices = new List<string>();
+
+        for (int i = 1, lastPos = 0; i < input.Length; i++)
+        {
+            if (input[i - 1] != input[i])
+            {
+                slices.Add(input.Substring(lastPos, i - lastPos));
+                lastPos = i;
+            }
+
+            if (i == input.Length - 1)
+                slices.Add(input[lastPos..]);
+        }
+
+        return string.Concat(slices.Select(s => s.Length > 1 ? $"{s.Length}{s[0]}" : $"{s[0]}"));
+    }
+
+    public static string Decode(string input)
+    {
+        var expanded = Regex.Replace(input, @"(?<pair>\d+[A-Z])",
+            m => new string(m.Groups["pair"].Value[^1], int.Parse(m.Groups["pair"].Value[..^1])),
+            RegexOptions.IgnoreCase);
+
+        var str = string.Concat(expanded);
+
+        return Regex.Replace(str, @"\d", " ");
+    }
+}*/

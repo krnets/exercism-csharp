@@ -1,0 +1,37 @@
+﻿/*using System.Collections.Generic;
+using System.Linq;
+
+public enum Plant { Violets, Radishes, Clover, Grass }
+
+public class KindergartenGarden
+{
+    private string[] children =
+    {
+        "Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny",
+        "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"
+    };
+
+    private Dictionary<char, Plant> map = new Dictionary<char, Plant>()
+        {['V'] = Plant.Violets, ['R'] = Plant.Radishes, ['C'] = Plant.Clover, ['G'] = Plant.Grass};
+
+    private readonly string _row1;
+    private readonly string _row2;
+
+    public KindergartenGarden(string diagram)
+    {
+        var arr = diagram.Split("\n");
+        _row1 = arr[0];
+        _row2 = arr[1];
+    }
+
+    public IEnumerable<Plant> Plants(string student)
+    {
+        int i = children.ToList().IndexOf(student);
+
+        return new List<Plant>
+        {
+            map[_row1[2 * i]], map[_row1[2 * i + 1]],
+            map[_row2[2 * i]], map[_row2[2 * i + 1]]
+        };
+    }
+}*/
