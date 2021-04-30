@@ -1,0 +1,30 @@
+﻿using System;
+
+public static class Diamond
+{
+    public static string Make(char target)
+    {
+        int half = target - 'A';
+        int width = 2 * half + 1;
+        var lines = new string[width];
+
+        for (int i = 0; i <= half; i++)
+        {
+            var array = new char[width];
+            Array.Fill(array, ' ', 0, width);
+
+            var c = (char)('A' + i);
+            int leftPos = half - i;
+            int rightPos = width - leftPos - 1;
+
+            array[leftPos] = c;
+            array[rightPos] = c;
+
+            var str = string.Concat(array);
+            lines[i] = str;
+            lines[width - i - 1] = str;
+        }
+
+        return string.Join('\n', lines);
+    }
+}
