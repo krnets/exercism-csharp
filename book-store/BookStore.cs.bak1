@@ -1,0 +1,53 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+
+public static class BookStore
+{
+    private static decimal bookPrice = 8m;
+
+    public static decimal Total(IEnumerable<int> books)
+    {
+        List<int> cart = books.ToList();
+        List<int> bundles = new List<int>();
+        int cartCount = cart.Count;
+
+        while (cartCount > 0)
+        {
+            // find max bundle of distinct books
+            var bundle = cart.ToHashSet();
+            int bundleSize = bundle.Count;
+
+            // if we find a bundle of 3 and we have previously
+            // found a bundle of 5, remove the 5 bundle and
+            // add two bundles of 4 as it is a better deal
+            if (bundleSize == 3 && bundles.Contains(5))
+            {
+                bundles.Remove(5);
+                bundles.AddRange(new[] {4, 4});
+            }
+            else bundles.Add(bundleSize);
+
+            // remove the distinct books that we found from the cart
+            foreach (var book in bundle)
+                cart.Remove(book);
+
+            cartCount = cart.Count;
+        }
+
+        return bundles.Sum(GetTotalWithDiscount);
+    }
+
+    private static decimal GetTotalWithDiscount(int quantity)
+    {
+        var discount = quantity switch
+        {
+            2 => 5,
+            3 => 10,
+            4 => 20,
+            5 => 25,
+            _ => 0
+        };
+        return quantity * bookPrice * (100 - discount) / 100;
+    }
+}
