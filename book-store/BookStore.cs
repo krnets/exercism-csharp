@@ -8,33 +8,32 @@ public static class BookStore
     public static decimal Total(IEnumerable<int> books)
     {
         List<int> cart = books.ToList();
-        List<int> bundles = new List<int>();
-        int cartCount = cart.Count;
+        List<int> bundleSizes = new List<int>();
+        int cartSize = cart.Count;
 
-        while (cartCount > 0)
+        while (cartSize > 0)
         {
             // find max bundle of distinct books
             var bundle = cart.ToHashSet();
-            int bundleSize = bundle.Count;
 
             // if we find a bundle of 3 and we have previously
             // found a bundle of 5, remove the 5 bundle and
             // add two bundles of 4 as it is a better deal
-            if (bundleSize == 3 && bundles.Contains(5))
+            if (bundle.Count == 3 && bundleSizes.Contains(5))
             {
-                bundles.Remove(5);
-                bundles.AddRange(new[] {4, 4});
+                bundleSizes.Remove(5);
+                bundleSizes.AddRange(new[] {4, 4});
             }
-            else bundles.Add(bundleSize);
+            else bundleSizes.Add(bundle.Count);
 
             // remove the distinct books that we found from the cart
             foreach (var book in bundle)
                 cart.Remove(book);
 
-            cartCount = cart.Count;
+            cartSize = cart.Count;
         }
 
-        return bundles.Sum(CalculateDiscount);
+        return bundleSizes.Sum(CalculateDiscount);
     }
 
     private static decimal CalculateDiscount(int quantity)
