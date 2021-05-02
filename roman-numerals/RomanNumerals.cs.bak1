@@ -1,0 +1,22 @@
+/*using System.Text;
+
+public static class RomanNumeralExtension
+{
+    public static string ToRoman(this int value)
+    {
+        string[] roman = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+        int[] numbers = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+        var sb = new StringBuilder();
+
+        for (int i = numbers.Length - 1; i >= 0; i--)
+        {
+            while (value / numbers[i] > 0)
+            {
+                sb.Append(roman[i]);
+                value -= numbers[i];
+            }
+        }
+
+        return sb.ToString();
+    }
+}*/
